@@ -1,0 +1,24 @@
+<div>
+    <div><h2>Lista de Servidores</h2></div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>PUERTO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let servidor of servidores; let i=index;" (click)="RowSelected(servidor);">
+                    <th scope="row" >{{servidor.id}}</th>
+                    <td>{{servidor.nombre}}</td>
+                    <td>{{servidor.puerto}}</td>
+                </tr>
+            </tbody>            
+        </table>
+    </div>
+    <div>
+        <app-clientes [clientes]="clientes"></app-clientes>
+    </div>
+</div>
