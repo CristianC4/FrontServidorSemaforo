@@ -1,11 +1,22 @@
 <div>
     <div><h2>Clientes</h2></div>
     <div>
-        <ul *ngFor="let cliente of clientes">
-            <li>{{cliente.nombre}}</li>
-        </ul>
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes; let i=index;" (click)="RowSelected(cliente);" class="columna">
+                    <th scope="row" class="registro">{{cliente.id}}</th>
+                    <td class="registro">{{cliente.nombre}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div>
-        <app-semaforo></app-semaforo>
+        <app-semaforo [semaforos]="semaforos"></app-semaforo>
     </div>
 </div>

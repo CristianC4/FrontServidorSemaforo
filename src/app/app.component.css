@@ -1,4 +1,19 @@
 .title{
+    font-style: none;
+    list-style-type: none;
     background-color: black;
     color: white;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    text-align: center;
+    padding: 5px;
+    top: 0;
+    left: 0;
+}
+.container{
+    display: flex;
+    flex-flow: column-reverse;
+    margin-top: 10%;
+    align-items: center;
 }

@@ -1,3 +1,37 @@
 <div>
-    <h2>Semaforo</h2>
+    <h2>Semaforos</h2>
+    <div class="container">
+        <div class="semaforo" *ngFor="let semaforo of semaforos">
+            <div class="cajaSemaforo">
+                <div 
+                    [ngClass]="{verde: semaforo.luzVerde.estado, disable:!semaforo.luzVerde.estado}" 
+                    class="circulo"
+                    (click)="cambiarLuz(semaforo.luzVerde.estado,'verde');"
+                ></div>
+                <div 
+                    [ngClass]="{amarillo: semaforo.luzAmarilla.estado, disable:!semaforo.luzAmarilla.estado}"
+                    class="circulo"
+                    (click)="cambiarLuz(semaforo.luzVerde.estado,'amarilla');"
+                ></div>
+                <div 
+                    [ngClass]="{rojo: semaforo.luzRoja.estado, disable:!semaforo.luzRoja.estado}" 
+                    class="circulo"
+                    (click)="cambiarLuz(semaforo.luzVerde.estado,'roja');"
+                >
+                </div>
+            </div>
+            <div class="formulario">
+                <label for="verde">Verde</label>
+                <input type="text" id="verde" name="verde" disabled [value]="semaforo.luzVerde.cantidad">
+                <label for="amarilla">Amarilla</label>
+                <input type="text" id="amarilla" name="amarilla" disabled [value]="semaforo.luzAmarilla.cantidad">
+                <label for="roja">Roja</label>
+                <input type="text" id="roja" name="roja" disabled [value]="semaforo.luzRoja.cantidad">
+            </div>
+        </div>
+    </div>
+    
+    <div>
+
+    </div>
 </div>

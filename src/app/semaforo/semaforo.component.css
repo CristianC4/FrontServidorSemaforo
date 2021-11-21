@@ -1,0 +1,44 @@
+.circulo{
+    width: 80px;
+    height: 80px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.verde{
+    background-color: green;
+    border: 2px solid black;
+    margin: 10px;
+}
+.amarillo{
+    background-color: yellow;
+    border: 2px solid black;
+    margin: 10px;
+}
+.rojo{
+    background-color: red;
+    border: 2px solid black;
+    margin: 10px;
+}
+.cajaSemaforo{
+    background-color: rgb(58, 58, 58);
+    border-color: black;
+    border: 3px solid;
+    border-radius: 10%;
+    display: inline-block;
+    margin: 20px;
+}
+.disable{
+    background-color: rgb(192, 192, 192);
+    border: 2px solid black;
+    margin: 10px;
+}
+.container{
+    display: flex;
+    align-items: flex-start;
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}

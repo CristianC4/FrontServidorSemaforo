@@ -9,9 +9,30 @@ export class ClientesComponent implements OnInit {
 
   constructor() { }
 
-  @Input() clientes = [{"nombre": '', "luzVerde": false, "luzAmarilla": false, "luzRoja": false}]
+  @Input() clientes = [
+    {
+      "id": 0,
+      "nombre": "anonymus",
+      "semaforos" : [
+        {
+          "id": 0,
+          "luzVerde":{"estado": false, "cantidad": 0},
+          "luzAmarilla": {"estado": false, "cantidad": 0},
+          "luzRoja": {"estado": false, "cantidad": 0}
+        }
+      ]
+    }
+  ]
+
+  semaforos = []
 
   ngOnInit(): void {
+  }
+
+  RowSelected(cliente:any){
+    console.log(cliente);
+    this.semaforos = cliente.semaforos;
+    console.log("Le estamos pasando estos semaforos",cliente.semaforos);
   }
 
 }
