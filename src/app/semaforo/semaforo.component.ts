@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -33,22 +34,36 @@ export class SemaforoComponent implements OnInit {
     console.log('imprimiento el semaforo : ',this.semaforos)
   }
 
-  cambiarLuz(estado: boolean, tipo: String){
-    estado = !estado;
+  eventoCambioLuz(estado: boolean, tipo: String, semaforo: any){
+    var index =  semaforo.id-1
     switch (tipo) {
       case 'verde':
-        console.log("Clickeando color verde")
+        semaforo.luzVerde.estado = !estado
+        this.semaforos[index] = semaforo
+        console.log("Clickeando la luz : ",tipo)
+        console.log("Pasando del estado : "+estado+" al estado "+!estado)
+        console.log("Del semaforo ",semaforo.id)
         break;
       case 'amarilla':
-        console.log("Clickeando color amarilla")
+        semaforo.luzAmarilla.estado = !estado
+        this.semaforos[index] = semaforo
+        console.log("Clickeando la luz : ",tipo)
+        console.log("Pasando del estado : "+estado+" al estado "+!estado)
+        console.log("Del semaforo ",semaforo.id)
         break;
       case 'roja':
-        console.log("Clickeando color roja")
+        semaforo.luzRoja.estado = !estado
+        this.semaforos[index] = semaforo
+        console.log("Clickeando la luz : ",tipo)
+        console.log("Pasando del estado : "+estado+" al estado "+!estado)
+        console.log("Del semaforo ",semaforo.id)
         break;
       default:
         console.log("ALGO VA MAL !")
         break;
     }
+    estado = !estado;
   }
+
 
 }

@@ -5,6 +5,7 @@
     text-align: center;
     font-size: larger;
     padding: 5px;
+    border-radius: 1ex;
 }
 .columna:hover{
     background-color: rgb(43, 43, 43);
@@ -12,4 +13,19 @@
 }
 .registro{
     padding: 5px 15px;
+    border: 1px white;
+}
+.container{
+    display: flex;
+}
+.listClients{
+    flex-direction: column;
+    margin: 50px;
+}
+.listLigth{
+    flex-direction: column;
+    margin: 50px;
+}
+.title{
+    text-align: center;
 }

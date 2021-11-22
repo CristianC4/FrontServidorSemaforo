@@ -12,8 +12,5 @@
     left: 0;
 }
 .container{
-    display: flex;
-    flex-flow: column-reverse;
     margin-top: 10%;
-    align-items: center;
 }

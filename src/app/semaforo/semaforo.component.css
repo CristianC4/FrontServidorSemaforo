@@ -42,3 +42,6 @@
     flex-direction: column;
     margin: 20px;
 }
+.title{
+    text-align: center;
+}

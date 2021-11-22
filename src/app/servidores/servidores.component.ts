@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  DoCheck, KeyValueDiffers, KeyValueDiffer } from '@angular/core';
 import { Input } from '@angular/core';
 
 @Component({
@@ -9,6 +9,7 @@ import { Input } from '@angular/core';
 
 export class ServidoresComponent implements OnInit {
 
+ 
   // Informaciòn que deberìa traer el servidor web
   servidores = [
     {
@@ -100,8 +101,10 @@ export class ServidoresComponent implements OnInit {
     },
   ]
   clientes = []
-  constructor() {
-   }
+  differ: KeyValueDiffer<string, any>;
+  constructor(private differs: KeyValueDiffers) {
+    this.differ = this.differs.find({}).create();
+  }
 
   RowSelected(servidor:any){
     console.log(servidor);
@@ -110,6 +113,15 @@ export class ServidoresComponent implements OnInit {
 
   ngOnInit(): void {
     //cargar informaciòn de los servidores disponibles /getServers
+  }
+
+  ngDoCheck() {
+    const change = this.differ.diff(this);
+    if (change) {
+      change.forEachChangedItem(item => {
+        console.log('item changed', item);
+      });
+    }
   }
 
 }

@@ -1,22 +1,22 @@
 <div>
-    <h2>Semaforos</h2>
+    <h2 class="title">Semaforos</h2>
     <div class="container">
         <div class="semaforo" *ngFor="let semaforo of semaforos">
             <div class="cajaSemaforo">
                 <div 
                     [ngClass]="{verde: semaforo.luzVerde.estado, disable:!semaforo.luzVerde.estado}" 
                     class="circulo"
-                    (click)="cambiarLuz(semaforo.luzVerde.estado,'verde');"
+                    (click)="eventoCambioLuz(semaforo.luzVerde.estado,'verde',semaforo);"
                 ></div>
                 <div 
                     [ngClass]="{amarillo: semaforo.luzAmarilla.estado, disable:!semaforo.luzAmarilla.estado}"
                     class="circulo"
-                    (click)="cambiarLuz(semaforo.luzVerde.estado,'amarilla');"
+                    (click)="eventoCambioLuz(semaforo.luzAmarilla.estado,'amarilla', semaforo);"
                 ></div>
                 <div 
                     [ngClass]="{rojo: semaforo.luzRoja.estado, disable:!semaforo.luzRoja.estado}" 
                     class="circulo"
-                    (click)="cambiarLuz(semaforo.luzVerde.estado,'roja');"
+                    (click)="eventoCambioLuz(semaforo.luzRoja.estado,'roja', semaforo);"
                 >
                 </div>
             </div>
