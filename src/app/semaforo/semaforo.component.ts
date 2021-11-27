@@ -1,5 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
+import { ServicioService } from '../services/servicio.service';
 
 @Component({
   selector: 'app-semaforo',
@@ -25,10 +26,12 @@ export class SemaforoComponent implements OnInit {
       }
     }
   ]
+  @Input() servidorId = 0
+  @Input() clienteId = 0
 
   semaforoSeleccionado = {}
 
-  constructor() { }
+  constructor(private  servicio: ServicioService) { }
 
   ngOnInit(): void {
     console.log('imprimiento el semaforo : ',this.semaforos)
@@ -43,6 +46,7 @@ export class SemaforoComponent implements OnInit {
         console.log("Clickeando la luz : ",tipo)
         console.log("Pasando del estado : "+estado+" al estado "+!estado)
         console.log("Del semaforo ",semaforo.id)
+        this.guardarCambio(semaforo,this.clienteId,this.servidorId)
         break;
       case 'amarilla':
         semaforo.luzAmarilla.estado = !estado
@@ -50,6 +54,7 @@ export class SemaforoComponent implements OnInit {
         console.log("Clickeando la luz : ",tipo)
         console.log("Pasando del estado : "+estado+" al estado "+!estado)
         console.log("Del semaforo ",semaforo.id)
+        this.guardarCambio(semaforo,this.clienteId,this.servidorId)
         break;
       case 'roja':
         semaforo.luzRoja.estado = !estado
@@ -57,6 +62,7 @@ export class SemaforoComponent implements OnInit {
         console.log("Clickeando la luz : ",tipo)
         console.log("Pasando del estado : "+estado+" al estado "+!estado)
         console.log("Del semaforo ",semaforo.id)
+        this.guardarCambio(semaforo,this.clienteId,this.servidorId)
         break;
       default:
         console.log("ALGO VA MAL !")
@@ -65,5 +71,14 @@ export class SemaforoComponent implements OnInit {
     estado = !estado;
   }
 
+  guardarCambio(semaforo: any, idCliente: number, idServidor: number){
+    let requestBody = {
+      "idServidor": idServidor,
+      "idCliente": idCliente,
+      "semaforo": semaforo
+    }
+    //this.servicio.saveSemaforo(requestBody).subscribe()
+    this.servicio.saveSemaforoHardCoded(requestBody)
+  }
 
 }

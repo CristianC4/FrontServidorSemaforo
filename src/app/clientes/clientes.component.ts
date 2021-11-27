@@ -9,6 +9,9 @@ export class ClientesComponent implements OnInit {
 
   constructor() { }
 
+  /**
+   * Variables que trae el servidor
+   */
   @Input() clientes = [
     {
       "id": 0,
@@ -23,8 +26,14 @@ export class ClientesComponent implements OnInit {
       ]
     }
   ]
-
+  @Input() servidorId = 0
+  
+  /**
+   * Variables auxiliares para guardar lo que se le quiere pasar al semaforo
+   */
   semaforos = []
+  clienteId = 0
+  serverId = 0
 
   ngOnInit(): void {
   }
@@ -32,6 +41,8 @@ export class ClientesComponent implements OnInit {
   RowSelected(cliente:any){
     console.log(cliente);
     this.semaforos = cliente.semaforos;
+    this.clienteId = cliente.id;
+    //this.serverId = this.servidorId
     console.log("Le estamos pasando estos semaforos",cliente.semaforos);
   }
 
