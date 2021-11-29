@@ -10,7 +10,7 @@ import { ServicioService } from '../services/servicio.service';
 
 export class ServidoresComponent implements OnInit {
   // Informaciòn que deberìa traer el servidor web
-  servidores = [
+  servidores: any = [
     {
       "id": 1,
       "nombre": "servidor-default",
@@ -50,12 +50,18 @@ export class ServidoresComponent implements OnInit {
 
   ngOnInit(): void {
     //cargar informaciòn de los servidores disponibles /getServers
-    this.servidores = this.servicio.getServidoresHardCoded()
+    this.servicio.getServidores().subscribe((response) => {
+      this.servidores = response
+      console.log(this.servidores)
+    });
     // timer jsx para postear la variable
     const contador = interval(5000); // 5 seg
     contador.subscribe(()=>{
       console.log("Haciendo la petición cada 5 segundos")
-      this.servidores = this.servicio.getServidoresHardCoded()
+      this.servicio.getServidores().subscribe((response) => {
+        this.servidores = response
+        console.log(this.servidores)
+      });
     })
   }
 
